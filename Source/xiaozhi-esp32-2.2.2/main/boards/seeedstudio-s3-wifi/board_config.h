@@ -21,33 +21,27 @@
 #define AUDIO_I2S_MIC_GPIO_WS GPIO_NUM_9
 #define AUDIO_I2S_MIC_GPIO_DIN GPIO_NUM_1
 
-// OLED I2C (SDA/SCL)
-// D4 -> GPIO5 : SDA
-// D5 -> GPIO6 : SCL
-#define DISPLAY_SDA_PIN GPIO_NUM_5
-#define DISPLAY_SCL_PIN GPIO_NUM_6
-#define DISPLAY_WIDTH 128
-#define DISPLAY_HEIGHT 64
+// TFT SPI Display (ST7735 / 120x160)
+#define DISPLAY_SPI_HOST SPI2_HOST
+#define DISPLAY_WIDTH 120
+#define DISPLAY_HEIGHT 160
 
-#if CONFIG_OLED_SSD1306_128X32
-#define DISPLAY_HEIGHT 32
-#elif CONFIG_OLED_SSD1306_128X64
-#define DISPLAY_HEIGHT 64
-#elif CONFIG_OLED_SH1106_128X64
-#define DISPLAY_HEIGHT 64
-#define SH1106
-#else
-#error "OLED screen type not selected"
-#endif
+// Safe GPIO pins for TFT SPI (Avoiding audio pins 1, 2, 4, 7, 9, 44)
+#define DISPLAY_SPI_MOSI_PIN GPIO_NUM_11
+#define DISPLAY_SPI_SCLK_PIN GPIO_NUM_12
+#define DISPLAY_TFT_CS_PIN   GPIO_NUM_10
+#define DISPLAY_TFT_DC_PIN   GPIO_NUM_13
+#define DISPLAY_TFT_RST_PIN  GPIO_NUM_14
 
-#define DISPLAY_MIRROR_X true
-#define DISPLAY_MIRROR_Y true
+#define DISPLAY_MIRROR_X false
+#define DISPLAY_MIRROR_Y false
+#define DISPLAY_SWAP_XY  false
 
 // Onboard LED
 #define BUILTIN_LED_GPIO GPIO_NUM_21
 
 // Buttons
-#define BOOT_BUTTON_GPIO GPIO_NUM_0         // 板载 Boot
+#define BOOT_BUTTON_GPIO GPIO_NUM_0         // Board Boot
 #define VOLUME_UP_BUTTON_GPIO GPIO_NUM_3    // D2
 #define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_8  // D9
 
@@ -55,4 +49,4 @@
 // compatibility with the code's constructor.
 #define TOUCH_BUTTON_GPIO GPIO_NUM_3
 
-#endif  // BOARD_CONFIG_H_
+#endif  // BOARD_CONFIG
