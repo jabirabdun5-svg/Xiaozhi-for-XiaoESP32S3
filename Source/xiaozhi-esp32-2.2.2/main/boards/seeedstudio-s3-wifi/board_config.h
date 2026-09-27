@@ -16,43 +16,37 @@
 #define AUDIO_I2S_SPK_GPIO_LRCK GPIO_NUM_4
 #define AUDIO_I2S_SPK_GPIO_DOUT GPIO_NUM_2
 
-// Microphone (RX, MASTER) - Bus #1
-#define AUDIO_I2S_MIC_GPIO_SCK GPIO_NUM_44
+// Microphone (RX, MASTER) - Bus #1 (SCK diubah ke GPIO 15)
+#define AUDIO_I2S_MIC_GPIO_SCK GPIO_NUM_15
 #define AUDIO_I2S_MIC_GPIO_WS GPIO_NUM_9
 #define AUDIO_I2S_MIC_GPIO_DIN GPIO_NUM_1
 
-// OLED I2C (SDA/SCL)
-// D4 -> GPIO5 : SDA
-// D5 -> GPIO6 : SCL
-#define DISPLAY_SDA_PIN GPIO_NUM_5
-#define DISPLAY_SCL_PIN GPIO_NUM_6
-#define DISPLAY_WIDTH 128
-#define DISPLAY_HEIGHT 64
+// TFT Display SPI (128x160)
+#define DISPLAY_SPI_HOST SPI2_HOST
+#define DISPLAY_WIDTH  128
+#define DISPLAY_HEIGHT 160
 
-#if CONFIG_OLED_SSD1306_128X32
-#define DISPLAY_HEIGHT 32
-#elif CONFIG_OLED_SSD1306_128X64
-#define DISPLAY_HEIGHT 64
-#elif CONFIG_OLED_SH1106_128X64
-#define DISPLAY_HEIGHT 64
-#define SH1106
-#else
-#error "OLED screen type not selected"
-#endif
+#define DISPLAY_PIN_MOSI GPIO_NUM_11
+#define DISPLAY_PIN_SCLK GPIO_NUM_12
+#define DISPLAY_PIN_CS   GPIO_NUM_10
+#define DISPLAY_PIN_DC   GPIO_NUM_13
+#define DISPLAY_PIN_RST  GPIO_NUM_14
+#define DISPLAY_PIN_BCKL GPIO_NUM_21
 
-#define DISPLAY_MIRROR_X true
-#define DISPLAY_MIRROR_Y true
+#define DISPLAY_MIRROR_X false
+#define DISPLAY_MIRROR_Y false
+#define DISPLAY_SWAP_XY  false
+
+#define DISPLAY_RGB_ORDER LCD_RGB_ORDER_BGR
 
 // Onboard LED
-#define BUILTIN_LED_GPIO GPIO_NUM_21
+#define BUILTIN_LED_GPIO GPIO_NUM_48
 
 // Buttons
-#define BOOT_BUTTON_GPIO GPIO_NUM_0         // 板载 Boot
-#define VOLUME_UP_BUTTON_GPIO GPIO_NUM_3    // D2
-#define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_8  // D9
+#define BOOT_BUTTON_GPIO GPIO_NUM_0         // Tombol Boot
+#define VOLUME_UP_BUTTON_GPIO GPIO_NUM_3    // Tombol Volume Atas
+#define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_8  // Tombol Volume Bawah
 
-// The touch keys are not needed for now, but we've provided a placeholder for them to ensure
-// compatibility with the code's constructor.
 #define TOUCH_BUTTON_GPIO GPIO_NUM_3
 
 #endif  // BOARD_CONFIG_H_
