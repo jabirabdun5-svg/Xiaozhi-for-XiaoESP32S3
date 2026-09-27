@@ -1,5 +1,4 @@
-
-  name: Build ESP32 Firmware
+name: Build ESP32 Firmware
 
 on:
   push:
@@ -33,3 +32,4 @@ jobs:
         with:
           name: firmware-bin
           path: Source/xiaozhi-esp32-2.2.2/build/*.bin
+ 
